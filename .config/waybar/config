@@ -1,0 +1,106 @@
+{
+    "position": "top", 
+    "height": 20,
+    "modules-center": ["sway/workspaces", "custom/spotify", "network", "tray", "pulseaudio", "battery", "cpu", "custom/date", "clock"],
+    // Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+	 	"persistent_workspaces": {
+	 		"1": [],
+	 		"2": [],
+	 		"3": [],
+	 		"4": [],
+	 		"5": [],
+	 		"6": [],
+	 		"7": [],
+	 		"8": [],
+	 		"9": [],
+	 		"10": []
+	},
+         	"format-icons": {
+             		"1": "一",
+             		"2": "二",
+             		"3": "三",
+             		"4": "四",
+             		"5": "五",
+             		"6": "六",
+             		"7": "七",
+             		"8": "八",
+             		"9": "九",
+             		"10": "〇"
+         }
+     },
+         "cpu": {
+        "format": "﬙{usage: >3}%",
+        "on-click": "alacritty -e htop"
+    },
+    "memory": {
+        "format": " {: >3}%",
+        "on-click": "alacritty -e htop"
+    },
+	"custom/date": {
+    		"format": "󰸗 {}",
+		"interval": 3600,
+		"exec": "/home/loki/bin/waybar-date.sh"
+	},
+	    "tray": {
+        "icon-size": 14,
+        "spacing": 5
+    },
+	"clock": {
+		"format": " {:%H:%M} ",
+        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+	},
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": " {temperatureC}°C",
+        "format": "{temperatureC}°C "
+    },
+	"battery": {
+        	"states": {
+            		"warning": 30,
+            		"critical": 15,
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-charging": "🔌  {capacity}%",
+        	"format-plugged": "🔌 {capacity}%",
+        	"format-alt": "{icon} {time}",
+        	"format-full": " {capacity}%",
+        	"format-icons": ["", "", ""]
+	},
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": " Disconnected",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "⚠ Disconnected",
+        	"on-click": "alacritty -e nmtui",
+		"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+	},
+	"pulseaudio": {
+		        "on-click": "pavucontrol",
+		"format": "{icon}  {volume}%",
+        	"format-muted": " Muted",
+        	"format-icons": {
+            	"headphone": "",
+            	"hands-free": "",
+            	"headset": "",
+            	"phone": "",
+            	"portable": "",
+            	"car": "",
+            	"default": ["", "", ""]
+        }
+      },
+      "custom/spotify": {
+            "exec": "/usr/bin/python3 /home/yeger/.config/waybar/scripts/mediaplayer.py --player spotify",
+            "format": "{} ",
+            "return-type": "json",
+            "on-click": "playerctl play-pause",
+            "on-click-right": "playerctl next",
+            "on-click-middle": "playerctl previous"
+        }
+    }
+}

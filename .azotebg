@@ -1,0 +1,3 @@
+C#!/usr/bin/env bash
+pkill swaybg
+swaybg -o eDP-1 -i '~/Pictures/Wallpapers/wallpaperflare.com_wallpaper.jpg' -m fill &
